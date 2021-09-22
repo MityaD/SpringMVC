@@ -18,4 +18,6 @@ public interface UserService {
     User findUserById(Long id) throws NoUserTableException;
 
     void deleteAll();
+
+
 }

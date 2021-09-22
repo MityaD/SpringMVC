@@ -17,7 +17,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long idAd;
 
     @Column(name = "city")
     private String city;
@@ -33,6 +33,13 @@ public class Address {
     private User user;
 
     public Address(String city, String street, String house) {
+        this.city = city;
+        this.street = street;
+        this.house = house;
+    }
+
+    public Address(Long idAd, String city, String street, String house) {
+        this.idAd = idAd;
         this.city = city;
         this.street = street;
         this.house = house;
