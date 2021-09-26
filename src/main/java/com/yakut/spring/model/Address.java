@@ -14,7 +14,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAd;
+    private Long idAd; //todo так себе название переменно
 
     @Column(name = "city")
     private String city;
