@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin")//todo залупин, какой нах админ??? напиши users, а остальные пусть от него идут или если не знаешь что написать вообще не делай так тогда
 public class UserController {
-
-    private UserService userService;
-    private AddressService addressService;
+//todo кароч, контроллеры которые отдают только страничку вынеси в отдельный файл, так не очень
+    private UserService userService;// todo у тебя ломбок на проекте зачем? и если хочешь через контруктор поле finalделай в любом случае. Кароч делай ломбоком
+    private AddressService addressService;// todo це шо?
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -62,7 +62,7 @@ public class UserController {
         return "redirect:/admin/users";
     }
 
-    @GetMapping(value = "/delete")
+    @GetMapping(value = "/delete")//todo get mapping на delete? ты серьезно?
     public String delete(@RequestParam Long id) {
         userService.deleteUserById(id);
         return "redirect:/admin/users";
