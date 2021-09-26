@@ -1,55 +1,18 @@
 package com.yakut.spring.controllers;
 
-import com.yakut.spring.exception.NoUserTableException;
 import com.yakut.spring.model.Address;
 import com.yakut.spring.model.User;
-import com.yakut.spring.service.AddressService;
 import com.yakut.spring.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin")//todo залупин, какой нах админ??? напиши users, а остальные пусть от него идут или если не знаешь что написать вообще не делай так тогда
+@AllArgsConstructor
+@RequestMapping("/users")
 public class UserController {
-//todo кароч, контроллеры которые отдают только страничку вынеси в отдельный файл, так не очень
-    private UserService userService;// todo у тебя ломбок на проекте зачем? и если хочешь через контруктор поле finalделай в любом случае. Кароч делай ломбоком
-    private AddressService addressService;// todo це шо?
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @GetMapping("/users")
-    public String getAllUsers(Model model) {
-        List<User> allUser = userService.findAllUser();
-        model.addAttribute("allUser", allUser);
-        return "user";
-    }
-
-    @GetMapping("/address")
-    public String getAddress(Model model, @RequestParam Long id) throws NoUserTableException {
-        User addressById = userService.findUserById(id);
-        model.addAttribute("addressById" , addressById);
-        return "address";
-    }
-
-    @GetMapping(value = "/add")
-    public String getPageSave(Model model, User user) {
-        model.addAttribute(user);
-        return "userForm";
-    }
-
-    @GetMapping("/updateForm")
-    public String updateForm(Model model, @RequestParam Long id) throws NoUserTableException {
-        model.addAttribute(userService.findUserById(id));
-        return "userForm";
-    }
+    private final UserService userService;
 
     @PostMapping
     public String updateUser(@RequestParam (required = false) Long  id, @RequestParam String firstName,
@@ -59,12 +22,12 @@ public class UserController {
                              @RequestParam (name = "address.house") String house) {
         User user = new User(id, firstName, lastName, age, new Address(city, street, house));
         userService.save(user);
-        return "redirect:/admin/users";
+        return "redirect:/user";
     }
 
-    @GetMapping(value = "/delete")//todo get mapping на delete? ты серьезно?
+    @GetMapping("/delete")
     public String delete(@RequestParam Long id) {
         userService.deleteUserById(id);
-        return "redirect:/admin/users";
+        return "redirect:/user";
     }
 }

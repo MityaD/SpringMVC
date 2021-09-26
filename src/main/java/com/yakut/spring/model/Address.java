@@ -14,7 +14,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAd; //todo так себе название переменно
+    private Long id_address;
 
     @Column(name = "city")
     private String city;
@@ -29,13 +29,6 @@ public class Address {
     private User user;
 
     public Address(String city, String street, String house) {
-        this.city = city;
-        this.street = street;
-        this.house = house;
-    }
-
-    public Address(Long idAd, String city, String street, String house) {
-        this.idAd = idAd;
         this.city = city;
         this.street = street;
         this.house = house;

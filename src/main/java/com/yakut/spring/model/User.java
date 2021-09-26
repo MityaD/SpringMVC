@@ -26,8 +26,8 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idAd")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn (name = "id_address")
     private Address address;
 
     public User(String firstName, String lastName, int age) {

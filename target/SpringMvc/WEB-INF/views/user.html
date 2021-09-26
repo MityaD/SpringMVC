@@ -7,7 +7,7 @@
 </head>
 <body>
 <br>
-<a href="/controller/add">Add User</a>
+<a href="/add">Add User</a>
 <br><br>
 <table border="1">
     <tr>
@@ -18,11 +18,11 @@
     </tr>
     <tr th:each="user, state :${allUser} ">
         <td th:utext="${state.count}" >No</td>
-        <td><a th:utext="${user.firstName}" th:href="@{/controller/address(id=${user.id})}">first name<a/></a>
+        <td><a th:utext="${user.firstName}" th:href="@{/address(id=${user.id})}">first name<a/></a>
         <td th:utext="${user.lastName}" >last name</td>
         <td th:utext="${user.age}" >age</td>
-        <td><a th:href="@{/controller/updateForm(id=${user.id})}">Update</a></td>
-        <td><a th:href="@{/controller/delete(id=${user.id})}">Delete</a></td>
+        <td><a th:href="@{/updateForm(id=${user.id})}">Update</a></td>
+        <td><a th:href="@{/users/delete(id=${user.id})}">Delete</a></td>
     </tr>
 </table>
 </body>
