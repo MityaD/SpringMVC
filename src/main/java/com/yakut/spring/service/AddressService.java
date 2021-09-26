@@ -4,7 +4,7 @@ import com.yakut.spring.exception.NoAddressTableException;
 import com.yakut.spring.exception.NoUserTableException;
 import com.yakut.spring.model.Address;
 import java.util.List;
-
+//todo а зачем оно вообще? разве где-то ты использовал? я не вижу
 public interface AddressService {
 
     Address save(Address address);
