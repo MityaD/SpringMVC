@@ -1,9 +1,6 @@
 package com.yakut.spring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -28,8 +25,7 @@ public class Address {
     @Column(name = "house")
     private String house;
 
-    @OneToOne(cascade = CascadeType.ALL)  //( каскад удаляет из привязанной таблицы при удалении юзера)
-    @JoinColumn (name = "address_id")
+    @OneToOne(mappedBy = "address")
     private User user;
 
     public Address(String city, String street, String house) {

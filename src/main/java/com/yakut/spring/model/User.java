@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
     @Column(name = "first_name")
@@ -26,10 +26,25 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @OneToOne(mappedBy = "user", orphanRemoval = true)  //если адрес удалили то и с базы он удалиться
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idAd")
     private Address address;
 
     public User(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public User(String firstName, String lastName, int age, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+    }
+
+    public User(Long id, String firstName, String lastName, int age) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

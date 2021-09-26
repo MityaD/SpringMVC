@@ -6,8 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-
-<form method="post" action="/controller/updateForm">
+<form method="post" action="/admin">
     <input type="hidden" name="id" th:field="*{user.id}">
     <dl>
         <dt>First Name:</dt>
@@ -21,7 +20,20 @@
         <dt>Age:</dt>
         <dd><input type="text" th:field="*{user.age}" size=40 name="age" required></dd>
     </dl>
+    <dl>
+        <dt>City:</dt>
+        <dd><input type="text" th:field="*{user.address.city}" size=40 name="city" required></dd>
+    </dl>
+    <dl>
+        <dt>Street:</dt>
+        <dd><input type="text" th:field="*{user.address.street}" size=40 name="street" required></dd>
+    </dl>
+    <dl>
+        <dt>House:</dt>
+        <dd><input type="text" th:field="*{user.address.house}" size=40 name="house" required></dd>
+    </dl>
     <button type="submit">Save</button>
 </form>
 </body>
+
 </html>
