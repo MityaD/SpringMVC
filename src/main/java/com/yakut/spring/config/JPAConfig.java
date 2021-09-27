@@ -42,9 +42,9 @@ public class JPAConfig {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");//todo ну давай сделай норм базу с норм именем уже
-        dataSource.setUsername( "postgres" );//todo ну и пользователя тоже
-        dataSource.setPassword( "1989g13a" );
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/yakushik_db");
+        dataSource.setUsername( "yakushik" );
+        dataSource.setPassword( "yakushik" );
         return dataSource;
     }
 
